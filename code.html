@@ -1,0 +1,120 @@
+<html>
+<head>
+	<title>The Code page</title>
+	<meta charset="utf-8">
+	
+<style>
+ ul   {padding: 0;
+
+         list-style: none;
+		 background: black;}
+
+   ul li{display: inline-block;
+         position: relative;
+		 line-height: 30px;
+		 text-align: left;}
+ul li a {display: block;
+         padding: 10px 30px;
+		 color: #000000;
+		 text-decoration: none;}
+ul li a:hover {color: black;
+               background: #ded3d3;
+
+</style>
+</head>
+<body> 
+     <ul>
+      <li ><a href="main.html" style=" color: Pink;">The main page</a></li>
+      <li ><a href="code.html" style=" color: Pink;">The Code page</a></li>	
+      <li ><a href="game.html" style=" color: Pink;">The Game page</a></li>	  
+     </ul>
+       <head>
+<style>
+body {
+  background-color:Pink;
+}
+</style>
+</head>
+     
+
+     	<body>
+<fieldset>
+		<legend>Print</legend>
+
+
+
+            <table  border="1" cellspacing="0" width="1000" id="tab">
+        <tr>
+          <th style="color:green;font-size:20px">The function</th>
+	      <th style="color:green;font-size:20px">Explanation</th>
+        </tr>
+		<tr>
+     		<td style="color:blue">
+			hideCards() {
+        this.cardsArray.forEach(card => {
+            card.classList.remove('visible');
+            card.classList.remove('matched');
+        });
+            </td>
+     		<td style="color: red"> هذه الدالة استخدمت لاخفاء الصور  </td>
+     	</tr>
+		<td style="color:blue">
+		 cards.forEach(card => {
+        card.addEventListener('click', () => {
+            game.flipCard(card);
+        });
+		</td>
+		<td style="color: red"> هذه الدالة استخدمت لبدأ اللعبة عند الضغط على الماوس  </td>
+     	</tr>
+		<tr>
+     		<td style="color:blue">
+			flipCard(card) {
+        if(this.canFlipCard(card)) {
+            this.audioController.flip();
+            this.totalClicks++;
+            this.ticker.innerText = this.totalClicks;
+            card.classList.add('visible');
+
+            if(this.cardToCheck) {
+                this.checkForCardMatch(card);
+            } else {
+                this.cardToCheck = card;
+            }
+            </td>
+     		<td style="color: red"> هذه الدالة استخدمت لاحصاء عدد الحركات  </td>
+     	</tr>
+		
+        <tr>
+     		<td style="color:blue">
+	    cardMatch(card1, card2) {
+        this.matchedCards.push(card1);
+        this.matchedCards.push(card2);
+        card1.classList.add('matched');
+        card2.classList.add('matched');
+        this.audioController.match();
+        if(this.matchedCards.length === this.cardsArray.length)
+            this.victory();}</td>
+     		<td style="color: red"> هذه الدالة استخدمت لمقارنة الصور ، ومعرفة ما إذا كانت متشابهة وإضافة خطوة إلى التقليب</td>
+     	</tr>
+     </table> </fieldset>  
+    </div>
+
+        <input type="button" value="Print" onclick="myApp.printTable()" />
+     
+
+</fieldset>
+
+</div>
+</body>
+<script>
+    var myApp = new function () {
+        this.printTable = function () {
+            var tab = document.getElementById('tab');
+            var win = window.open('', '', 'height=700,width=700');
+            win.document.write(tab.outerHTML);
+            win.document.close();
+            win.print();
+        }
+    }
+</script>
+</html>
